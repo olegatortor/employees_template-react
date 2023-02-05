@@ -1,0 +1,16 @@
+.add-emp {
+    display: flex;
+    height: 35px;
+}
+.add-emp input {
+    width: 300px;
+    margin-right: 15px;
+    padding: 0 15px;
+}
+.send:last-child {
+    border-radius: 0;
+    height: 35px;
+}
+.last {
+    margin-bottom: 30px;
+}

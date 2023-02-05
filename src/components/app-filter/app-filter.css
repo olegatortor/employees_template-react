@@ -1,0 +1,22 @@
+.filter-btns {
+    padding-top: 15px;
+}
+.btn {
+    width: 150px;
+    height: 40px;
+    border: 1px solid #fff;
+    color: #fff;
+    background-color: rgb(58, 73, 114);
+    cursor: pointer;
+    transition: all .5s;
+}
+.btn:first-child{
+    border-radius: 5px 0 0 5px;
+}
+.btn:last-child{
+    border-radius: 0 5px 5px 0;
+}
+.btn_active, .btn:hover {    
+    color: rgb(58, 73, 114);
+    background-color: #fff;
+}
