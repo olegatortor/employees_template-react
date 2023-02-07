@@ -6,6 +6,12 @@ import AddEmployees from '../app-add-employees/app-add-employees';
 
 import './app.css'
 
+const data = [
+    {name: 'Michel Sc', salary:'5000'},
+    {name: 'Jim', salary:'3400'},
+    {name: 'Dwight', salary:'4000'}
+]
+
 function App() {
     return (
         <div className='app'>
@@ -14,7 +20,7 @@ function App() {
                 <AppSearch/>
                 <AppFilter/>
             </div>
-            <AppList/>
+            <AppList data = {data}/>
             <AddEmployees/>
         </div>
     )

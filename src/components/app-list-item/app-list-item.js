@@ -1,10 +1,12 @@
 import './app-list-item.css'
 
-function AppListItem() {
+function AppListItem({name, salary, increase}) {
+    let incClass = increase ? 'increase': ''; 
+
     return (
-        <li className='item'>
-            <span>Oleg Zelenskiy</span>
-            <input type="text" defaultValue='1000$' className='item-input'/>
+        <li className={'item ' + incClass}>
+            <span>{name}</span>
+            <input type="text" defaultValue={salary + '$'} className='item-input'/>
 
             <div className='btns-item'>
                 <button className='btn-item'>

@@ -6,6 +6,9 @@
     padding: 15px;
     border-bottom: 1px solid rgb(46, 46, 46);
 }
+.item.increase span, .item.increase .item-input {
+    color:#b49a05
+}
 .item:last-child {
     border-bottom: rgb(58, 73, 114);
 }
