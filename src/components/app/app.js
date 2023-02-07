@@ -7,9 +7,9 @@ import AddEmployees from '../app-add-employees/app-add-employees';
 import './app.css'
 
 const data = [
-    {name: 'Michel Sc', salary:'5000'},
-    {name: 'Jim', salary:'3400'},
-    {name: 'Dwight', salary:'4000'}
+    {name: 'Michel Sc', salary:'5000', increase: false, id: 1},
+    {name: 'Jim', salary:'3400', increase: true, id: 2},
+    {name: 'Dwight', salary:'4000', increase: false, id: 3}
 ]
 
 function App() {
