@@ -17,7 +17,7 @@ class AppListItem extends Component {
         }))
     }
 
-    likeEmp = () => {
+    onAddLike = () => {
         this.setState(({like}) => ({
             like: !like
         }))
@@ -33,7 +33,7 @@ class AppListItem extends Component {
 
         return (
             <li className={'item ' + incClass}>
-                <span onClick={this.likeEmp}>{name}</span>
+                <span onClick={this.onAddLike}>{name}</span>
                 <input type="text" defaultValue={salary + '$'} className='item-input'/>
     
                 <div className='btns-item'>
