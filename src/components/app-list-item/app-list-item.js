@@ -1,25 +1,57 @@
+
+import { Component } from 'react';
 import './app-list-item.css'
 
-function AppListItem({name, salary, increase}) {
-    let incClass = increase ? 'increase': ''; 
+class AppListItem extends Component {
+    constructor (props) {
+        super(props);
+        this.state = {
+            increase: false,
+            like: false
+        }
+    }
+    
+    onIncrease = () => {
+        this.setState(({increase}) => ({
+            increase: !increase
+        }))
+    }
 
-    return (
-        <li className={'item ' + incClass}>
-            <span>{name}</span>
-            <input type="text" defaultValue={salary + '$'} className='item-input'/>
+    likeEmp = () => {
+        this.setState(({like}) => ({
+            like: !like
+        }))
+    }
 
-            <div className='btns-item'>
-                <button className='btn-item'>
-                    <i className='fas fa-cookie'></i>
-                </button>
+    render() {
+        const {name, salary} = this.props
+        const {increase} = this.state
+        const {like} = this.state
 
-                <button className='btn-item'>
-                    <i className='fas fa-trash'></i>
-                </button>
-                <i className='fas fa-star like'></i>
-            </div>
-        </li>
-    )
+        let incClass = increase ? 'increase': ''; 
+        let likeE = like ? 'like': ''; 
+
+        return (
+            <li className={'item ' + incClass}>
+                <span onClick={this.likeEmp}>{name}</span>
+                <input type="text" defaultValue={salary + '$'} className='item-input'/>
+    
+                <div className='btns-item'>
+                    <button className='btn-item' 
+                            onClick={this.onIncrease}>
+                        <i className='fas fa-cookie'></i>
+                    </button>
+    
+                    <button className='btn-item'>
+                        <i className='fas fa-trash'></i>
+                    </button>
+                    <i className={'fas fa-star ' + likeE}></i>
+                </div>
+            </li>
+        )
+    }
+
+    
 }
 
 export default AppListItem
