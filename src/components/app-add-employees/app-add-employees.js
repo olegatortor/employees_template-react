@@ -16,6 +16,15 @@ class AddEmployees extends Component{
         })    
     }
 
+    onAddNewItem = (e) => {
+        e.preventDefault()
+        this.props.onAdd(this.state.name, this.state.salary)
+        this.setState ({
+            name: '',
+            salary: ''
+        })
+    }
+
     render() {
         const {name, salary} = this.state
 
@@ -33,7 +42,7 @@ class AddEmployees extends Component{
                             name='salary'
                             value={salary}
                             onChange= {this.onChangeInput} />
-                    <button type='submit' className='btn send'>Додати</button>
+                    <button onClick={this.onAddNewItem}  type='submit' className='btn send'>Додати</button>
                 </form>
             </div>
         )

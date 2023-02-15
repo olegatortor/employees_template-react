@@ -24,7 +24,7 @@ class AppListItem extends Component {
     }
 
     render() {
-        const {name, salary} = this.props
+        const {name, salary, onDelete} = this.props
         const {increase} = this.state
         const {like} = this.state
 
@@ -42,7 +42,7 @@ class AppListItem extends Component {
                         <i className='fas fa-cookie'></i>
                     </button>
     
-                    <button className='btn-item'>
+                    <button onClick={onDelete} className='btn-item'>
                         <i className='fas fa-trash'></i>
                     </button>
                     <i className={'fas fa-star ' + likeE}></i>
