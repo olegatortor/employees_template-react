@@ -22,14 +22,14 @@ class App extends Component {
     }
 
 
-    onDeleteItem = (id) => {
+    onDelete = (id) => {
         this.setState(({data}) => {
             return {
                 data: data.filter(item => item.id !== id)
             }
         }) 
     }
-    onAddItem = (name, salary) => {
+    onAdd = (name, salary) => {
         const newItem = {name: name, salary: salary, increase: false, rise: false, id: this.newId++}
 
         this.setState(({data}) => {
@@ -64,10 +64,10 @@ class App extends Component {
                     <AppFilter/>
                 </div>
                 <AppList data = {this.state.data}
-                         onDelete = {this.onDeleteItem}
+                         onDelete = {this.onDelete}
                          onToggleProp = {this.onToggleProp}
                          />
-                <AddEmployees onAdd = {this.onAddItem}/>
+                <AddEmployees onAdd = {this.onAdd}/>
             </div>
         )
     }
