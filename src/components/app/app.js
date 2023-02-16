@@ -13,45 +13,61 @@ class App extends Component {
         super(props);
         this.state = {
             data: [
-                {name: 'Michel Sc', salary:'5000', increase: false, id: 1},
-                {name: 'Jim', salary:'3400', increase: false, id: 2},
-                {name: 'Dwight', salary:'4000', increase: false, id: 3}
+                {name: 'Michel Sc', salary:'5000', increase: false, rise: false, id: 1},
+                {name: 'Jim', salary:'3400', increase: false, rise: false, id: 2},
+                {name: 'Dwight', salary:'4000', increase: false, rise: false, id: 3}
             ]
         }
-        this.newId = this.state.data.length + 1
+        this.newId = this.state.data.length + 1;  
     }
 
 
-    deleteItem = (id) => {
+    onDeleteItem = (id) => {
         this.setState(({data}) => {
             return {
                 data: data.filter(item => item.id !== id)
             }
         }) 
     }
-    addItem = (name, salary) => {
-        const newItem = {name: name, salary: salary, increase: false, id: this.newId++}
+    onAddItem = (name, salary) => {
+        const newItem = {name: name, salary: salary, increase: false, rise: false, id: this.newId++}
 
         this.setState(({data}) => {
             const newData = [...data].concat(newItem)
             return  {
                 data: newData
             }
-        })
+        }) 
+    }
+
+    onToggleProp = (id, prop) => {
+        this.setState(({data}) => ({
+            data: data.map(item => {
+                if (item.id === id) {
+                    return {...item, [prop]: !item[prop]}
+                }
+                return item
+            })
+        }))
     }
 
     render() {
+        const employees = this.state.data.length
+        const increased = this.state.data.filter(item => item.increase).length
+
         return (
             <div className='app'>
-                <AppInfo/>
+                <AppInfo employees = {employees}
+                         increased = {increased}/>
                 <div className="box">
                     <AppSearch/>
                     <AppFilter/>
                 </div>
                 <AppList data = {this.state.data}
-                         onDelete = {this.deleteItem}
+                         onDelete = {this.onDeleteItem}
+                         onToggleProp = {this.onToggleProp}
                          />
-                <AddEmployees onAdd = {this.addItem}/>
+                <AddEmployees onAdd = {this.onAddItem}/>
             </div>
         )
     }
