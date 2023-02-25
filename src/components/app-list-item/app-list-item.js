@@ -1,15 +1,17 @@
 import './app-list-item.css'
 
 function AppListItem(props) {
-    const {name, salary, increase, rise, onDelete, onToggleProp} = props
+    const {name, salary, increase, rise, onDelete, onToggleProp, onChangeSalary} = props
     let incClass = increase ? 'increase': ''; 
     let likeE = rise ? 'like': ''; 
 
-
     return (
         <li className={'item '+ incClass}>
-            <span onClick={onToggleProp} data-toggle='rise'>{name}</span>
-            <input type="text" defaultValue={salary + '$'} className='item-input'/>
+            <span  onClick={onToggleProp} data-toggle='rise'>{name}</span>
+            <input  type="text" 
+                    defaultValue={salary + '$'} 
+                    className='item-input'
+                    onChange={onChangeSalary}/>
 
             <div className='btns-item'>
                 <button className='btn-item' 

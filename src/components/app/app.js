@@ -14,15 +14,15 @@ class App extends Component {
         this.state = {
             data: [
                 {name: 'Michel Sc', salary:'5000', increase: false, rise: false, id: 1},
-                {name: 'Jim', salary:'3400', increase: false, rise: false, id: 2},
-                {name: 'Dwight', salary:'4000', increase: true, rise: false, id: 3}
+                {name: 'Jim', salary:'3400', increase: true, rise: false, id: 2},
+                {name: 'Dwight', salary:'4000', increase: true, rise: false, id: 3},
+                {name: 'Anj', salary:'700', increase: false, rise: true, id: 4}
             ],
             term: '',
             filter: 'all'
         }
         this.newId = this.state.data.length + 1;  
     }
-
 
     onDelete = (id) => {
         this.setState(({data}) => {
@@ -42,11 +42,21 @@ class App extends Component {
         }) 
     }
 
-    onToggleProp = (id, prop) => {
+    onToggleProp = (id, prop, value) => {
         this.setState(({data}) => ({
             data: data.map(item => {
                 if (item.id === id) {
                     return {...item, [prop]: !item[prop]}
+                }
+                return item
+            })
+        }))
+    }
+    onChangeSalary = (id, newCurr) => {
+        this.setState(({data}) => ({
+            data: data.map(item => {
+                if(item.id === id) {
+                    return {...item, salary: newCurr.match(/\d+/g).join('')}
                 }
                 return item
             })
@@ -101,6 +111,7 @@ class App extends Component {
                 <AppList data = {visibleData}
                          onDelete = {this.onDelete}
                          onToggleProp = {this.onToggleProp}
+                         onChangeSalary = {this.onChangeSalary}
                          />
                 <AddEmployees onAdd = {this.onAdd}/>
             </div>
