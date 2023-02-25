@@ -14,9 +14,9 @@ function AppList({data, onDelete, onToggleProp}) {
     })
 
     return (
-        <div className='box box-white'>
+        <ul className='box box-white'>
             {list}
-        </div>
+        </ul>
     )
 }
 export default AppList

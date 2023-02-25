@@ -15,8 +15,10 @@ class App extends Component {
             data: [
                 {name: 'Michel Sc', salary:'5000', increase: false, rise: false, id: 1},
                 {name: 'Jim', salary:'3400', increase: false, rise: false, id: 2},
-                {name: 'Dwight', salary:'4000', increase: false, rise: false, id: 3}
-            ]
+                {name: 'Dwight', salary:'4000', increase: true, rise: false, id: 3}
+            ],
+            term: '',
+            filter: 'all'
         }
         this.newId = this.state.data.length + 1;  
     }
@@ -51,19 +53,52 @@ class App extends Component {
         }))
     }
 
+    searchEmp = (items, term) => {
+        if (term.length === 0) {
+            return items;
+        }
+
+        return items.filter(item => {
+            return item.name.indexOf(term) > -1
+        })
+
+    }
+    onSearchUpdater = (term) => {
+        this.setState({term})
+    }
+
+    forPromotion = (items, filter) => {
+        switch(filter) {
+            case 'increase':
+                return items.filter(item => item.increase === true);
+            case 'more1000':
+                return items.filter(item => item.salary > 1000);
+            default:
+                return items
+        }
+    }
+    onFilterSelect = (filter) => {
+        this.setState({filter})
+    }
+
     render() {
-        const employees = this.state.data.length
-        const increased = this.state.data.filter(item => item.increase).length
+        const {data, term, filter} = this.state
+        const employees = data.length
+        const increased = data.filter(item => item.increase).length
+        const visibleData = this.forPromotion(this.searchEmp(data, term), filter) 
 
         return (
             <div className='app'>
                 <AppInfo employees = {employees}
                          increased = {increased}/>
                 <div className="box">
-                    <AppSearch/>
-                    <AppFilter/>
+                    <AppSearch onSearchUpdater = {this.onSearchUpdater}/>
+                    <AppFilter  data = {visibleData}
+                                forPromotion = {this.forPromotion}
+                                onFilterSelect = {this.onFilterSelect}
+                                filter = {filter}/>
                 </div>
-                <AppList data = {this.state.data}
+                <AppList data = {visibleData}
                          onDelete = {this.onDelete}
                          onToggleProp = {this.onToggleProp}
                          />
