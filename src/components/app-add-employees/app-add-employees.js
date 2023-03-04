@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import './app-add-employees.css'
+import './app-add-employees.scss'
 
 class AddEmployees extends Component{
     constructor(props) {

@@ -1,5 +1,3 @@
-import './app-info.css'
-
 function AppInfo(props) {
 
     return (

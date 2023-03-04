@@ -1,4 +1,4 @@
-import './app-list-item.css'
+import './app-list-item.scss'
 
 function AppListItem(props) {
     const {name, salary, increase, rise, onDelete, onToggleProp, onChangeSalary} = props

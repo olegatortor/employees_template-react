@@ -1,4 +1,3 @@
-import './app-list.css'
 import AppListItem from '../app-list-item/app-list-item'
 
 function AppList({data, onDelete, onToggleProp, onChangeSalary}) {

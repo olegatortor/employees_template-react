@@ -5,17 +5,22 @@
     background-color: #fff;
     padding: 15px;
     border-bottom: 1px solid rgb(46, 46, 46);
-}
-.item.increase span, .item.increase .item-input {
-    color:#ddbd09
-}
-.item:last-child {
-    border-bottom: rgb(58, 73, 114);
-}
-.item span {
-    cursor: pointer;
-    font-size: 20px;
-    min-width: 550px;
+    &.increase span, &.increase &-input {
+        color:#ddbd09
+    }
+    &:last-child {
+        border-bottom: rgb(58, 73, 114);
+    }
+    & span {
+        cursor: pointer;
+        font-size: 20px;
+        min-width: 550px;
+    }
+    &-input {
+        text-align: center;
+        border: 0;
+        font-size: 20px;
+    }
 }
 .fa-star {
     width: 35px;
@@ -49,9 +54,4 @@
     font-size: 17px;
     border: none;
     cursor: pointer;
-}
-.item-input {
-    text-align: center;
-    border: 0;
-    font-size: 20px;
 }
